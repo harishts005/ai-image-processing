@@ -1,0 +1,6 @@
+{
+  "name": "Imagen",
+  "description": "Sample from Imagen models to generate images",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

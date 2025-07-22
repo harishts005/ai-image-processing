@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generation Studio</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@1.0.0",
+    "firebase-functions": "https://esm.sh/firebase-functions@^6.4.0",
+    "cors": "https://esm.sh/cors@^2.8.5"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <header>
+        <h1>Image Generation Studio</h1>
+    </header>
+    <main class="container">
+        <section class="controls">
+            <h2>Prompt</h2>
+            <div class="prompt-group">
+                <textarea id="prompt-input" placeholder="Describe the image you want to create... (e.g., a cat wearing a spacesuit)" rows="4"></textarea>
+                <div id="image-preview-container" class="hidden">
+                    <img id="image-preview" src="#" alt="Image preview"/>
+                    <button id="clear-image-btn" aria-label="Clear uploaded image">&times;</button>
+                </div>
+                <label for="file-upload" class="file-upload-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                    <span>Upload Image</span>
+                </label>
+                <input type="file" id="file-upload" accept="image/*" hidden>
+            </div>
+
+            <h2>Settings</h2>
+            <div class="settings-group">
+                <label for="image-count">Number of images:</label>
+                <select id="image-count">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                </select>
+            </div>
+            <div class="settings-group">
+                <label>Aspect Ratio:</label>
+                <div class="aspect-ratio-buttons">
+                    <button class="aspect-ratio-btn" data-ratio="16:9">16:9</button>
+                    <button class="aspect-ratio-btn" data-ratio="4:3">4:3</button>
+                    <button class="aspect-ratio-btn active" data-ratio="1:1">1:1</button>
+                    <button class="aspect-ratio-btn" data-ratio="3:4">3:4</button>
+                    <button class="aspect-ratio-btn" data-ratio="9:16">9:16</button>
+                </div>
+            </div>
+
+            <button id="generate-btn">
+                <span class="btn-text">Generate</span>
+                <div class="spinner hidden"></div>
+            </button>
+        </section>
+        <section id="results-gallery" class="results-gallery">
+            <p class="placeholder-text">Your generated images will appear here.</p>
+        </section>
+    </main>
+
+    <script type="module" src="index.tsx" defer></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
